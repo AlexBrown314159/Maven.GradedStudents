@@ -1,63 +1,56 @@
 package io.zipcoder;
 
 import org.junit.Test;
-
+import java.util.Arrays;
 import java.util.ArrayList;
 
 public class Student {
 
-    String myFirstName;
-    String myLastName;
-    Double[] myExamScores;
-
+    String firstName;
+    String lastName;
+    Double[] examScores;
 
 
     public Student() {
-        String myFirstName;
-        String myLastName;
-        Double[] myExamScores;
 
     }
 
     public void setFirstName(String FN) {
-        this.myFirstName = FN;
+        firstName = FN;
     }
 
     public String getFirstName() {
-        String FN = this.myFirstName;
-        return FN;
+        return firstName;
     }
 
     public void setLastName(String LN) {
-        this.myLastName = LN;
+        lastName = LN;
     }
 
     public String getLastName() {
-        String LN = this.myLastName;
-        return LN;
+        return lastName;
     }
 
     public Integer getNumberOfExamsTaken() {
-        Integer iCount = myExamScores.length;
-        return iCount;
+        Integer iCount = examScores.length;
+        return examScores.length;
     }
 
-    public void setExamScores(Double[] examScores) {
+    public void setExamScores(Double[] ExamScores) {
 
-        myExamScores = examScores;
+        examScores = ExamScores;
     }
 
     public Double[] getExamScores() {
-
-        return myExamScores;
+        return examScores;
     }
 
     public void printExamScores() {
 
-        for (Integer i = 0; i < myExamScores.length; i++) {
+        for (Integer i = 0; i < examScores.length; i++) {
 
-            Double ex = myExamScores[i];
-            String outPut = String.valueOf(myExamScores[i]);
+            Double ex = examScores[i];
+            String outPut = String.valueOf(examScores[i]);
 
             System.out.println(outPut);
         }
@@ -67,32 +60,18 @@ public class Student {
 
     public void addExamScore(Double newScore) {
 
-        Integer iCount = 0;
-        for (Integer i = 0; i < myExamScores.length; i++) {
-            if (myExamScores == null) {
-                iCount++;
-            }
-        }
+       ArrayList<Double> tmp = new ArrayList<Double>(Arrays.asList(examScores));
 
-        Double[] temp = new Double[myExamScores.length - iCount + 1];
+       tmp.add(newScore);
 
-        iCount = 0;
-        for (Integer i = 0; i < myExamScores.length; i++) {
-            if (myExamScores[i] != null) {
-                temp[iCount] = myExamScores[i];
-                iCount++;
-            }
-        }
-        temp[iCount] = newScore;
-
-        myExamScores = temp;
+       examScores = tmp.toArray(examScores);
 
     }
 
 
     public void setExamScore(int i, Double newScore) {
 
-        myExamScores[i] = newScore;
+        examScores[i] = newScore;
 
     }
 
@@ -101,11 +80,11 @@ public class Student {
 
         Double ave = 0.0;
 
-        for (Integer i = 0; i < myExamScores.length; i++) {
-            ave += myExamScores[i];
+        for (Integer i = 0; i < examScores.length; i++) {
+            ave += examScores[i];
         }
 
-        ave = ave / myExamScores.length;
+        ave = ave / examScores.length;
 
         return ave;
     }
@@ -113,14 +92,13 @@ public class Student {
     @Override
     public String toString() {
 
-        String myName = myFirstName + " " + myLastName;
+        String myName = firstName + " " + lastName;
 
         System.out.println("to String");
 
         return myName;
 //      this does not work !
     }
-
 
 
 }
