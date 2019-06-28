@@ -135,6 +135,13 @@ public class StudentTest {
     @Test
     public void removeStudentTEST() {
 
+        for (Integer i = 0; i < Classroom.students.length; i++) {
+
+            Classroom.students[i] = null;
+
+            Classroom.removeNullsFromStudents();
+        }
+
         Student s1 = new Student();
         s1.setFirstName("Joe");
         s1.setLastName("Washington");
